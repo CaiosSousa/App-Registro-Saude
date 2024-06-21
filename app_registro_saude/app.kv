@@ -1,0 +1,202 @@
+<Tela>:
+    orientation: 'vertical'
+    padding: 10
+    spacing: 10
+    canvas.before:
+        Color:
+            rgba: (0.88, 1, 0.88, 1)  # Verde claro
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Label:
+        text: 'APP MINHA SAÚDE'
+        font_size: '36sp'
+        size_hint_y: None
+        height: '65dp'
+        color: (0, 0, 0, 1)
+        bold: True
+        canvas.before:
+            Color:
+                rgba: (0.88, 1, 0.88, 1)  # Mesma cor do fundo padrão
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+    Label:
+        text: 'REGISTRAR'
+        font_size: '26sp'
+        size_hint_y: None
+        height: '30dp'
+        color: (0, 0, 0, 1)
+        bold: True
+        canvas.before:
+            Color:
+                rgba: (0.88, 1, 0.88, 1)  # Mesma cor do fundo padrão
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y: None
+        height: '180dp'
+        spacing: 10
+        canvas.before:
+            Color:
+                rgba: (0.88, 1, 0.88, 1)  # Mesma cor do fundo padrão
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: 'PRESSÃO ARTERIAL'
+            font_size: '22sp'
+            size_hint_y: None
+            height: '30dp'
+            color: (0, 0, 0, 1)
+            canvas.before:
+                Color:
+                    rgba: (0.88, 1, 0.88, 1)  # Mesma cor do fundo padrão
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+        
+        BoxLayout:
+            size_hint_y: None
+            height: '40dp'
+
+            canvas.before:
+                Color:
+                    rgba: (0.33, 0.33, 0.33, 1)  # Cinza escuro
+                Line:
+                    width: 1
+                    rectangle: self.x, self.y, self.width, self.height
+
+            TextInput:
+                id: input_pressao
+                hint_text: 'Digite aqui o valor da pressão arterial'
+                multiline: False
+                font_size: '26sp'
+                background_normal: ''
+                background_color: (1, 1, 1, 1)  # Mesma cor do fundo padrão
+        
+        Label:
+            text: 'GLICEMIA'
+            font_size: '22sp'
+            size_hint_y: None
+            height: '30dp'
+            color: (0, 0, 0, 1)
+            canvas.before:
+                Color:
+                    rgba: (0.88, 1, 0.88, 1)  # Mesma cor do fundo padrão
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+        BoxLayout:
+            size_hint_y: None
+            height: '40dp'
+            canvas.before:
+                Color:
+                    rgba: (0.33, 0.33, 0.33, 1)  # Cinza escuro
+                Line:
+                    width: 1
+                    rectangle: self.x, self.y, self.width, self.height
+
+            TextInput:
+                id: input_glicemia
+                hint_text: 'Digite aqui o valor da glicemia'
+                multiline: False
+                font_size: '26sp'
+                background_normal: ''
+                background_color: (1, 1, 1, 1)  # Mesma cor do fundo padrão
+
+    Button:
+        text: 'Enviar Dados'
+        size_hint: None, None
+        size_hint_y: None
+        size: 300, 50
+        height: '50dp'
+        pos_hint: {'center_x': 0.5}
+        font_size: '24sp'
+        background_color: (0.53, 0.81, 0.92, 1)  # Azul claro
+        color: (1, 1, 1, 1)  # Branco
+        on_press: root.armazenar_dados()
+        canvas.before:
+            Color:
+                rgba: (0.88, 1, 0.88, 1)  # Mesma cor do fundo padrão
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+    Label:
+        text: '______________________________________________________________________________________'
+        font_size: '12sp'
+        size_hint_y: None
+        height: '5dp'
+        color: (0, 0, 0, 1)
+        bold: True
+        canvas.before:
+            Color:
+                rgba: (0.88, 1, 0.88, 1)  # Mesma cor do fundo padrão
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+    Label:
+        text: 'HISTÓRICO'
+        font_size: '28sp'
+        size_hint_y: None
+        height: '40dp'
+        color: (0, 0, 0, 1)
+        bold: True
+        canvas.before:
+            Color:
+                rgba: (0.88, 1, 0.88, 1)  # Mesma cor do fundo padrão
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+    
+    ScrollView:
+        size_hint: (1, 1)
+        GridLayout:
+            id: layout_historico
+            cols: 1
+            size_hint_y: None
+            height: self.minimum_height
+            row_default_height: '40dp'
+            row_force_default: True
+            canvas.before:
+                Color:
+                    rgba: (0.88, 1, 0.88, 1)  # Mesma cor do fundo padrão
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+
+    Button:
+        text: 'APAGAR HISTÓRICO'
+        size_hint: None, None
+        size_hint_y: None
+        size: 200, 40
+        height: '50dp'
+        pos_hint: {'center_x': 0.5}
+        font_size: '18sp'
+        background_color: (0.53, 0.81, 0.92, 1)  # Azul claro
+        color: (1, 1, 1, 1)  # Branco
+        on_release: root.apagar_historico()
+
+<Label>:
+    color: (0, 0, 0, 1)
+    font_size: '20sp'
+    size_hint_y: None
+    height: '40dp'
+    padding: 10, 10
+    canvas.before:
+        Color:
+            rgba: (0.88, 1, 0.88, 1)  # Mesma cor do fundo padrão
+        Rectangle:
+            pos: self.pos
+            size: self.size
